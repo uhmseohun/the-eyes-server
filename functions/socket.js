@@ -8,3 +8,8 @@ exports.onEyeClosed = (io, socket) => (time) => {
   const roomKey = Object.keys(socket.rooms)[0];
   io.to(roomKey).emit('eyeClosed', time);
 };
+
+exports.onLeaveRoom = (io, socket) => () => {
+  const roomKey = Object.keys(socket.rooms)[0];
+  io.to.emit(roomKey).emit('memberLeaved');
+}
